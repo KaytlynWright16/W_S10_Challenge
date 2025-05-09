@@ -28,7 +28,7 @@ export default function PizzaForm() {
   const [state, dispatch] = useReducer(formReducer, initialFormState);
   const [postOrder, {isLoading, error, isSuccess}] = usePostOrderMutation();
 
-  onSubmit = async evt => {
+  const onSubmit = async evt => {
     evt.preventDefault();
     const toppings = Object.keys(state).filter(k => ['1', '2', '3', '4', '5'].includes(k) && state[k])
     const payload = {fullName: state.fullName, size: state.size, toppings,}
@@ -40,7 +40,7 @@ export default function PizzaForm() {
   }
 
   return (
-    <form onSubmit={onsubmit}>
+    <form onSubmit={onSubmit}>
       <h2>Pizza Form</h2>
       {isLoading && <div className='pending'>Order in progress...</div>}
       {error && <div className='failure'>Order failed: fullName is required</div>}

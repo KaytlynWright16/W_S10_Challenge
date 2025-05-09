@@ -9,6 +9,13 @@ export default function OrderList() {
 
   const filteredOrders = filter === 'All' ? orders : orders.filter(o => o.size === filter)
 
+const toppingsMap = {
+  '1': 'Pepperoni',
+  '2': 'Green Peppers',
+  '3': 'Pineapple',
+  '4': 'Mushrooms',
+  '5': 'Ham'        
+}
 
   return (
     <div id="orderList">
@@ -19,12 +26,7 @@ export default function OrderList() {
             return (
               <li key={idx}>
                 <div>
-                  {order.fullName} ordred a {order.size} pizza with: 
-                  {order.toppings.map(id => {
-                    
-                    const toppingsMap = {'1': 'Peperoni', '2': 'Green Pepers', '3': 'Pineapple', '4': 'Mushrooms', '5': 'Ham'}
-                    return `${toppingsMap[id] || ''}`
-                  }).join(', ')}
+                  {order.fullName} ordered a {order.size} pizza{order.toppings.length ? `with ${order.toppings.map(t => toppingsMap[t]).join(', ')}` : ' with no toppings'}}
                 </div>
               </li>
             )
