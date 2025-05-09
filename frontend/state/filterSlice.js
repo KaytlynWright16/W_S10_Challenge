@@ -8,5 +8,5 @@ const filterSlice = createSlice({
     }
 });
 
-export const {setFiltr} = filterSlice.selectSlice.actions;
+export const {setFilter} = filterSlice.actions;
 export default filterSlice.reducer;
